@@ -1,6 +1,5 @@
 package com.example.loanexample.loan;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import com.example.loanexample.interest.Interest;
@@ -11,7 +10,7 @@ public class LoanServiceImpl implements LoanService {
     private Interest interest;
     private Map<String, InterestRule> interestRuleMap;
 
-    public LoanServiceImpl(LoanRepositoryImpl loanRepository, Interest interest, Map<String, InterestRule> interestRuleMap) {
+    public LoanServiceImpl(LoanRepositoryImpl loanRepository, Interest interest) {
         this.loanRepository = loanRepository;
         this.interest = interest;
         this.interestRuleMap = interestRuleMap;
