@@ -36,7 +36,7 @@ public class Loan {
         isVip = vip;
     }
 
-    public int calculateInterest(InterestRule interestRule) {
-        return interestRule.calculate(this.loanAmount);
+    public int calculateInterest(LoanInterestRule loanInterestRule) {
+        return loanInterestRule.calculate(this.loanAmount);
     }
 }

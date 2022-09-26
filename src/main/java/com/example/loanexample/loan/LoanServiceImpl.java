@@ -2,17 +2,13 @@ package com.example.loanexample.loan;
 
 import java.util.Map;
 
-import com.example.loanexample.interest.Interest;
-
 public class LoanServiceImpl implements LoanService {
 
     private LoanRepository loanRepository;
-    private Interest interest;
-    private Map<String, InterestRule> interestRuleMap;
+    private Map<String, LoanInterestRule> interestRuleMap;
 
-    public LoanServiceImpl(LoanRepositoryImpl loanRepository, Interest interest) {
+    public LoanServiceImpl(LoanRepositoryImpl loanRepository) {
         this.loanRepository = loanRepository;
-        this.interest = interest;
         this.interestRuleMap = interestRuleMap;
     }
 
@@ -29,13 +25,14 @@ public class LoanServiceImpl implements LoanService {
         return loanAmount;
     }
 
-    @Override
-    public int getInterestAmount(Loan loan, Interest interest) {
-        return interest.getInterestAmount(loan.getLoanAmount());
-    }
+//    @Override
+//    public int getInterestAmount(Loan loan, Interest interest) {
+//        return interest.calculate(loan.getLoanAmount());
+//    }
 
+    @Override
     public int getNealInterestAmount(Loan loan) {
-        InterestRule interestRule = interestRuleMap.get("CL");
-        return loan.calculateInterest(interestRule);
+        LoanInterestRule loanInterestRule = interestRuleMap.get("CL");
+        return loan.calculateInterest(loanInterestRule);
     }
 }
